@@ -1,0 +1,17 @@
+<h1>List of Subjects</h1>
+	<table>
+  <tr>
+    <th>Subject Name</th>
+    <th>Price</th>
+  </tr>
+  <%@subject.each do |f| %>
+  <tr>
+  	
+  		<td><%=f.name %></td>
+  		<td><%=f.price %></td>
+  		<td><a href="<%=subject_show_path(f.id) %>"> Show</a></td>
+  		<td><a href="<%=subject_edit_path(f.id) %>"> Edit</a></td>
+  </tr>
+  
+  <%end %>
+  </table>
