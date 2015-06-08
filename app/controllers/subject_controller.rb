@@ -22,8 +22,20 @@ class SubjectController < ApplicationController
 	def show
 
 		@subject = Subject.find(params[:id])
+		@coment = Coment.new
+		#binding.pry
+		@posts = Coment.where('post_id=?', params[:id])
+		# binding.pry
 		
 	end
+	def comnt_create
+		@subject = Subject.find(params[:id])
+		@coment = Coment.new(comnt)
+		if @coment.save
+			redirect_to subject_show_path(@subject)
+		end
+	end
+
 	def edit
 		@subject = Subject.find(params[:id])
 		
@@ -42,6 +54,9 @@ class SubjectController < ApplicationController
 	def req_params
 		 params.require('subject').permit(:name,:price)
 		
+	end
+	def comnt
+		params.require('coment').permit(:title, :message)
 	end
 
 end

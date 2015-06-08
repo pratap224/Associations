@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
-
+  resources :subjects do
+  resources :coments
+end
   get 'subject/index'
   get 'subject/new'
   post 'subject/create'
   get 'subject/show/:id' => 'subject#show', as: 'subject_show'
   get 'subject/edit/:id' => 'subject#edit', as: 'subject_edit'
   patch 'subject/update/:id' => 'subject#update', as: 'subject_update'
+  post 'subject/comnt_create/:id'  => 'subject#comnt_create', as: 'subject_comnt'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
